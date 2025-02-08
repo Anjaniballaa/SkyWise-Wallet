@@ -1,6 +1,6 @@
 # SkyWise-Wallet
 
-"Skywise is a user-friendly expense tracker that simplifies managing your finances. Built with HTML, CSS, and JavaScript, it offers an intuitive interface to monitor your spending and savings effortlessly."
+SkyWise-Wallet is a user-friendly expense tracker that simplifies managing your finances. Built with HTML, CSS, and JavaScript, it offers an intuitive interface to monitor your spending and savings effortlessly.
 
 ## Features
 
@@ -9,3 +9,15 @@
 - **Categorization**: Organize expenses into customizable categories.
 - **Responsive Design**: Accessible on both desktop and mobile devices.
 - **Data Visualization**: Visual charts to analyze spending patterns.
+
+## Open the Application
+
+To access the SkyWise-Wallet application:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/skywise-wallet.git
+   cd skywise-wallet
+2. **Open the Application**:
+- **Locate the index.html file in the project directory**.
+- **Open index.html in your preferred web browser to start using the application**.
