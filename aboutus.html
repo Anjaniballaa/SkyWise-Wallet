@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - SkyWise Wallet</title>
+  <style>
+    body {
+      background-color: black;
+      color: #f5f5dc; /* Light beige color */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; /* Adjust to keep elements at the top */
+      min-height: 100vh; /* Ensure content fills the full viewport */
+    }
+
+    /* Back Arrow */
+    .back-arrow {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      color: #32CD32;
+      cursor: pointer;
+    }
+
+    .back-arrow:hover {
+      color: #fff;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      text-align: center;
+      font-size: 36px; /* Increased font size */
+      color: #32CD32;
+      font-weight: bold;
+      margin-top: 20px; /* Reduced margin to bring it closer to the top */
+      padding: 20px; /* Added padding to give it more emphasis */
+      background-color: rgba(50, 205, 50, 0.1); /* Slight background color for emphasis */
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(50, 205, 50, 0.7); /* Neon green shadow to make it pop */
+    }
+
+    /* Container for About Us Content */
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+      width: 90%;
+      max-width: 1400px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    /* Heading */
+    .heading {
+      font-size: 36px;
+      font-weight: bold;
+      color: #32CD32; /* Neon Green */
+      margin-bottom: 20px;
+      text-align: left;
+      width: 100%;
+    }
+
+    /* Content Section */
+    .content {
+      flex: 1;
+      max-width: 500px; /* Reduced content width */
+      text-align: left;
+    }
+
+    .description {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .features h3 {
+      font-size: 24px;
+      color: #32CD32;
+      margin-bottom: 15px;
+    }
+
+    .features ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .features li {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Image Section */
+    .about-image {
+      width: 100%;
+      max-width: 500px; /* Reduced image width */
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(50, 205, 50, 0.7); /* Neon green shadow */
+      margin-right: 40px; /* Space between image and text */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Back Arrow -->
+  <a href="indexes.html" class="back-arrow">&#8592;</a>
+
+  <!-- Quote Section (Moved to Top) -->
+  <div class="quote-section">
+    <p>"SkyWise Wallet: Your partner in reaching financial heights through smarter savings."</p>
+  </div>
+
+  <!-- About Us Section -->
+  <div class="container">
+    <!-- Image on the Left -->
+    <div>
+      <img src="about-us-image.jpg" alt="SkyWise Wallet" class="about-image">
+    </div>
+
+    <!-- Content on the Right -->
+    <div class="content">
+      <h1 class="heading">About Us</h1>
+      <p class="description">
+        SkyWise Wallet is the ultimate money-tracking app designed to simplify your finances and help you achieve your goals. 
+        With its sleek and intuitive interface, SkyWise Wallet allows you to effortlessly track your income, expenses, and savings in real-time.
+      </p>
+    
+      <!-- Key Features -->
+      <div class="features">
+        <h3>Key features include:</h3>
+        <ul>
+          <li><strong>Smart Budgeting Tools:</strong> Set and monitor budgets to keep your spending on track.</li>
+          <li><strong>Expense Categorization:</strong> Automatically categorize your transactions for clear insights into where your money goes.</li>
+          <li><strong>Savings Goals:</strong> Visualize your progress and achieve your financial dreams faster.</li>
+          <li><strong>Secure and Private:</strong> Industry-leading encryption ensures your data stays safe.</li>
+          <li><strong>Multi-Device Syncing:</strong> Stay updated on your finances anytime, anywhere.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

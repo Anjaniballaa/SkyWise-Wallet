@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Manager Dashboard</title>
+  <link rel="stylesheet" href="d.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <h1><span class="white-text">SkyWise <br> Wallet</h1>
+    </div>
+    <div class="profile">
+      <img src="admin-profile.jpg" alt="Admin" class="profile-pic">
+      <p>Admin</p>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">
+        <img src="dashboard.jpg" alt="Dashboard Icon" class="icon"> Dashboard</a></li>
+      <li><a href="expenses.html">
+        <img src="expense.jpg" alt="Expense Icon" class="icon"> Expense</a></li>
+      <li><a href="income.html">
+        <img src="income.jpg" alt="Income Icon" class="icon"> Income</a></li>
+      <li><a href="tools.html">
+        <img src="tools.jpg" alt="tools Icon" class="icon"> Tools</a></li>
+      <li><a href="settings.html">
+        <img src="settings.jpg" alt="Settings Icon" class="icon"> Settings</a></li>
+      <li><a href="profile.html">
+        <img src="profile.jpg" alt="Profile Icon" class="icon"> Profile</a></li>
+      <li><a href="logout.html">
+        <img src="logout.jpg" alt="Logout Icon" class="icon"> Logout</a></li>
+    </ul>
+  </div>
+  <div id="calculatorPopup" class="popup hidden">
+    <div class="calculator">
+        <input type="text" id="popupDisplay" readonly>
+        <div class="calculator-buttons">
+            <button onclick="appendPopupNumber('7')">7</button>
+            <button onclick="appendPopupNumber('8')">8</button>
+            <button onclick="appendPopupNumber('9')">9</button>
+            <button onclick="appendPopupOperator('/')">/</button>
+            <button onclick="appendPopupNumber('4')">4</button>
+            <button onclick="appendPopupNumber('5')">5</button>
+            <button onclick="appendPopupNumber('6')">6</button>
+            <button onclick="appendPopupOperator('*')">*</button>
+            <button onclick="appendPopupNumber('1')">1</button>
+            <button onclick="appendPopupNumber('2')">2</button>
+            <button onclick="appendPopupNumber('3')">3</button>
+            <button onclick="appendPopupOperator('-')">-</button>
+            <button onclick="appendPopupNumber('0')">0</button>
+            <button onclick="appendPopupNumber('.')">.</button>
+            <button class="clear" onclick="clearPopupDisplay()">C</button>
+            <button onclick="appendPopupOperator('+')">+</button>
+            <button class="equal" style="grid-column: span 4;" onclick="calculatePopup()">=</button>
+        </div>
+    </div>
+    <button class="close-popup" onclick="togglePopup()">Close</button>
+</div>
+
+<button id="openPopup" onclick="togglePopup()">Open Calculator</button>
+
+  <div class="main-content">
+    <div class="header">
+      <h2>Dashboard</h2>
+    </div>
+
+    <div class="summary-cards">
+      <div class="card">
+        <h4>Expense Last Month</h4>
+        <p id="expLastMonth">₹0</p>
+      </div>
+      <div class="card">
+        <h4>Expense This Month</h4>
+        <p id="expThisMonth">₹0</p>
+      </div>
+      <div class="card">
+        <h4>Income Last Month</h4>
+        <p id="incLastMonth">₹0</p>
+      </div>
+      <div class="card">
+        <h4>Income This Month</h4>
+        <p id="incThisMonth">₹0</p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="form-card">
+        <h3>Expense Info</h3>
+        <form id="expenseForm">
+          <input type="datetime-local" name="date" required>
+          <select name="category" required>
+            <option value="food">Food</option>
+            <option value="travel">Travel</option>
+            <option value="shopping">Shopping</option>
+            <option value="education">Education</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="health">Health Care</option>
+            <option value="personal">Personal Care</option>
+            <option value="debt">Debt Payments</option>
+            <option value="others">Others</option>
+          </select>
+          <select name="source" required>
+            <option value="cash">Cash</option>
+            <option value="cheque">Cheque</option>
+            <option value="phonepay">PhonePe</option>
+            <option value="gpay">Google Pay</option>
+            <option value="paytm">Paytm</option>
+            <option value="upi">Other UPI Apps</option>
+            <option value="others">Other Mode</option>
+          </select>
+          <input type="number" name="amount" placeholder="Amount" required>
+          <textarea name="remarks" placeholder="Remarks"></textarea>
+          <button type="submit">Add Expense</button>
+        </form>
+      </div>
+
+      <div class="form-card">
+        <h3>Income Info</h3>
+        <form id="incomeForm">
+          <input type="datetime-local" name="date" required>
+          <select name="category" required>
+            <option value="salary">Salary</option>
+            <option value="business">Business</option>
+            <option value="investment">Investment</option>
+            <option value="freelance">Freelance</option>
+            <option value="others">Others</option>
+          </select>
+          <select name="source" required>
+            <option value="cash">Cash</option>
+            <option value="cheque">Cheque</option>
+            <option value="phonepay">PhonePe</option>
+            <option value="gpay">Google Pay</option>
+            <option value="paytm">Paytm</option>
+            <option value="upi">Other UPI Apps</option>
+            <option value="others">Other Mode</option>
+          </select>
+          <input type="number" name="amount" placeholder="Amount" required>
+          <textarea name="remarks" placeholder="Remarks"></textarea>
+          <button type="submit">Add Income</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<!-- Include Calculator Popup CSS -->
+<link rel="stylesheet" href="calculator-popup.css">
+
+<!-- Include Calculator Popup JavaScript -->
+<script src="calculator-popup.js"></script>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

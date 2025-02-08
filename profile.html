@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="d.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <h1><span class="orange-text">SkyWise <br> Wallet</h1>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">
+        <img src="dashboard.jpg" alt="Dashboard Icon" class="icon"> Dashboard</a></li>
+      <li><a href="expenses.html">
+        <img src="expense.jpg" alt="Expense Icon" class="icon"> Expense</a></li>
+      <li><a href="income.html">
+        <img src="income.jpg" alt="Income Icon" class="icon"> Income</a></li>
+      <li><a href="tools.html">
+        <img src="tools.jpg" alt="tools Icon" class="icon"> Tools</a></li>
+      <li><a href="settings.html">
+        <img src="settings.jpg" alt="Settings Icon" class="icon"> Settings</a></li>
+      <li><a href="profile.html" class="active">
+        <img src="profile.jpg" alt="Profile Icon" class="icon"> Profile</a></li>
+      <li><a href="logout.html">
+        <img src="logout.jpg" alt="Logout Icon" class="icon"> Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h2>Profile</h2>
+    </div>
+    <div class="content-section">
+      <!-- Profile Picture Section -->
+      <div class="form-card">
+        <h3>Update Profile Picture</h3>
+        <input type="file" id="imageUpload" accept="image/*">
+        <div class="profile">
+          <!-- Profile Picture Preview -->
+          <img src="admin-profile.jpg" alt="Admin" class="profile-pic" id="profilePic">
+          <p id="profileName">Admin</p> <!-- Display the user's name here -->
+        </div>
+      </div>
+
+      <!-- Profile Update Form -->
+      <div class="form-card">
+        <h3>Update Profile</h3>
+        <form id="profileForm">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+
+      <!-- Change Password Form -->
+      <div class="form-card">
+        <h3>Change Password</h3>
+        <form id="passwordForm">
+          <input type="password" name="currentPassword" placeholder="Current Password" required>
+          <input type="password" name="newPassword" placeholder="New Password" required>
+          <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+          <button type="submit">Update Password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

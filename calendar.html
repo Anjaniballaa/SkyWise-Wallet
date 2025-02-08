@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar - Expense Manager</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      background-color: #f4f6f9;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(to right, #000 40%, #00FF44);
+      color: white;
+      height: 200vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .logo h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    .profile p {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li {
+      margin: 10px 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      transition: background 0.3s ease;
+      border-radius: 5px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links .active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #000, #00FF44);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .header h2 {
+      margin: 0;
+    }
+
+    .calendar-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .calendar-controls button {
+      background: #4B0082;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .calendar-controls button:hover {
+      background: #FFA500;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+
+    .calendar .day {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 15px;
+      text-align: center;
+      border-radius: 5px;
+      position: relative;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .calendar .day:hover {
+      transform: scale(1.05);
+    }
+
+    .calendar .day .expense {
+      background: rgba(255, 0, 0, 0.2);
+      color: red;
+      padding: 5px;
+      border-radius: 5px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .calendar .day .income {
+      background: rgba(0, 255, 0, 0.2);
+      color: green;
+      padding: 5px;
+      border-radius: 5px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .review-box {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      font-size: 16px;
+      text-align: center;
+      color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-box h3 {
+      color: #4B0082;
+      margin-bottom: 10px;
+    }
+
+    .review-box p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <h1><span class="orange-text">Expense</span> Manager</h1>
+    </div>
+    <div class="profile">
+      <img src="admin-profile.jpg" alt="Admin Profile">
+      <p>Admin</p>
+      <p>John Doe</p>
+    </div>
+    <ul class="nav-links">
+      <li><a href="calendar.html" class="active"><img src="calendar.jpg" alt="Calendar Icon" class="icon"> Calendar</a></li>
+      <li><a href="calculator.html"><img src="calculator-icon.jpg" alt="Calculator Icon" class="icon"> Calculator</a></li>
+      <li><a href="currency-converter.html"><img src="currency-icon.jpg" alt="Currency Converter Icon" class="icon"> Currency Converter</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h2>Transactions +/-</h2>
+      <p>Details of your daily incomes and expenses.</p>
+    </div>
+
+    <div class="calendar-controls">
+      <button id="prevMonth" aria-label="Previous Month">❮</button>
+      <select id="yearSelector"></select>
+      <h3 id="currentMonthYear">Month Year</h3>
+      <button id="nextMonth" aria-label="Next Month">❯</button>
+    </div>
+
+    <div id="calendar" class="calendar"></div>
+
+    <div id="monthlyReviewBox" class="review-box">
+      <h3>Monthly Review</h3>
+      <p id="reviewMessage">Loading review...</p>
+    </div>
+
+    <div id="yearlyReviewBox" class="review-box">
+      <h3>Yearly Review</h3>
+      <p id="yearlyReviewMessage">Loading review...</p>
+    </div>
+  </div>
+
+  <script src="calendar.js"></script>
+</body>
+</html>

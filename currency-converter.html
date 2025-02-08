@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .converter {
+            background-color: black;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            border: 2px solid #00FF00; /* Neon green border */
+        }
+        .converter h1 {
+            text-align: center;
+            color: #00FF00; /* Neon green for heading */
+            text-shadow: 0 0 10px #00FF00;
+            margin-bottom: 20px;
+        }
+        .converter label {
+            font-size: 16px;
+            margin-top: 10px;
+            display: block;
+            color: white;
+        }
+        .converter input, .converter select {
+            width: 100%;
+            height: 40px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            box-sizing: border-box;
+            background-color: white; /* White input fields */
+            color: black; /* Black text in input fields */
+        }
+        .converter button {
+            width: 100%;
+            height: 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: white; /* White button */
+            color: black; /* Black text */
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .converter button:hover {
+            background-color: #00FF00; /* Neon green on hover */
+            color: black;
+        }
+        .converter .result {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #00FF00; /* Neon green for result */
+            text-shadow: 0 0 5px #00FF00;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h1>Currency Converter</h1>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+
+        <label for="from-currency">From:</label>
+        <select id="from-currency">
+            <option value="USD">US Dollar</option>
+            <option value="EUR">Euro</option>
+            <option value="GBP">British Pound</option>
+            <option value="INR">Indian Rupee</option>
+            <option value="AUD">Australian Dollar</option>
+            <option value="CAD">Canadian Dollar</option>
+            <option value="JPY">Japanese Yen</option>
+            <option value="CNY">Chinese Yuan</option>
+        </select>
+
+        <label for="to-currency">To:</label>
+        <select id="to-currency">
+            <option value="USD">US Dollar</option>
+            <option value="EUR">Euro</option>
+            <option value="GBP">British Pound</option>
+            <option value="INR">Indian Rupee</option>
+            <option value="AUD">Australian Dollar</option>
+            <option value="CAD">Canadian Dollar</option>
+            <option value="JPY">Japanese Yen</option>
+            <option value="CNY">Chinese Yuan</option>
+        </select>
+
+        <button onclick="convertCurrency()">Convert</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        async function convertCurrency() {
+            const amount = document.getElementById('amount').value;
+            const fromCurrency = document.getElementById('from-currency').value;
+            const toCurrency = document.getElementById('to-currency').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!amount || amount <= 0) {
+                resultDiv.textContent = 'Please enter a valid amount';
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`);
+                const data = await response.json();
+                const rate = data.rates[toCurrency];
+                const convertedAmount = (amount * rate).toFixed(2);
+
+                resultDiv.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+            } catch (error) {
+                resultDiv.textContent = 'Error fetching conversion rates';
+            }
+        }
+    </script>
+</body>
+</html>

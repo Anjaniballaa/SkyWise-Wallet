@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator with Popup</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .popup {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            background-color: black;
+            border: 2px solid #00FF00;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .calculator input {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: right;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .calculator-buttons button {
+            height: 50px;
+            font-size: 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-buttons button:hover {
+            background-color: #ddd;
+        }
+
+        .equal {
+            background-color: #FFA500;
+            color: white;
+        }
+
+        .equal:hover {
+            background-color: #FF4500;
+        }
+
+        .clear {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .clear:hover {
+            background-color: #d32f2f;
+        }
+
+        .close-popup {
+            align-self: flex-end;
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-popup:hover {
+            background-color: #d32f2f;
+        }
+
+        #openPopup {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #00FF00;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Calculator Popup Page</h1>
+    <p>This page demonstrates a calculator pop-up at the end of the page. Click the button to open the calculator.</p>
+
+    <!-- Calculator Popup -->
+    <div id="calculatorPopup" class="popup hidden">
+        <div class="calculator">
+            <input type="text" id="popupDisplay" readonly>
+            <div class="calculator-buttons">
+                <button onclick="appendPopupNumber('7')">7</button>
+                <button onclick="appendPopupNumber('8')">8</button>
+                <button onclick="appendPopupNumber('9')">9</button>
+                <button onclick="appendPopupOperator('/')">/</button>
+                <button onclick="appendPopupNumber('4')">4</button>
+                <button onclick="appendPopupNumber('5')">5</button>
+                <button onclick="appendPopupNumber('6')">6</button>
+                <button onclick="appendPopupOperator('*')">*</button>
+                <button onclick="appendPopupNumber('1')">1</button>
+                <button onclick="appendPopupNumber('2')">2</button>
+                <button onclick="appendPopupNumber('3')">3</button>
+                <button onclick="appendPopupOperator('-')">-</button>
+                <button onclick="appendPopupNumber('0')">0</button>
+                <button onclick="appendPopupNumber('.')">.</button>
+                <button class="clear" onclick="clearPopupDisplay()">C</button>
+                <button onclick="appendPopupOperator('+')">+</button>
+                <button class="equal" style="grid-column: span 4;" onclick="calculatePopup()">=</button>
+            </div>
+        </div>
+        <button id="closePopup" class="close-popup" onclick="togglePopup()">Close</button>
+    </div>
+
+    <!-- Button to open the calculator -->
+    <button id="openPopup" onclick="togglePopup()">Open Calculator</button>
+
+    <script>
+        const popupDisplay = document.getElementById('popupDisplay');
+        let popupInput = '';
+
+        // Toggle the popup visibility
+        function togglePopup() {
+            const popup = document.getElementById('calculatorPopup');
+            popup.classList.toggle('hidden');
+        }
+
+        // Calculator functions for the popup
+        function appendPopupNumber(number) {
+            popupInput += number;
+            popupDisplay.value = popupInput;
+        }
+
+        function appendPopupOperator(operator) {
+            if (popupInput !== '' && !isNaN(popupInput.slice(-1))) {
+                popupInput += operator;
+                popupDisplay.value = popupInput;
+            }
+        }
+
+        function clearPopupDisplay() {
+            popupInput = '';
+            popupDisplay.value = '';
+        }
+
+        function calculatePopup() {
+            try {
+                popupInput = eval(popupInput).toString();
+                popupDisplay.value = popupInput;
+            } catch {
+                popupDisplay.value = 'Error';
+                popupInput = '';
+            }
+        }
+    </script>
+</body>
+</html>

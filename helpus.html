@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Us - SkyWise Wallet</title>
+  <style>
+    body {
+      background-color: black;
+      color: #f5f5dc; /* Light beige color */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      background-color: #000; /* Neon Green */
+      padding: 20px;
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      color: #32CD32;
+    }
+
+    /* Back Arrow */
+    /* Back Arrow */
+.back-arrow {
+    position: absolute;
+    top: 10px;  /* Move it a bit above */
+    left: 20px;  /* Position it on the left */
+    font-size: 30px;
+    color: #32CD32;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .back-arrow:hover {
+    color: #fff;
+  }
+  
+
+    /* Main Content Section */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #32CD32;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Contact Information */
+    .contact-info {
+      background-color: black;
+      color: #32CD32; /* Neon Green */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(50, 205, 50, 0.6);
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .contact-info h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #32CD32;
+    }
+
+    .contact-info p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    /* Interactive Chat Section */
+    .chat-box {
+      width: 100%;
+      max-width: 600px;
+      background-color: black;
+      color: #32CD32;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(50, 205, 50, 0.6);
+    }
+
+    .chat-box h3 {
+      font-size: 24px;
+      color: #32CD32;
+      margin-bottom: 15px;
+    }
+
+    .chat-box input,
+    .chat-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      margin-left: -10px;
+      border: 2px solid #32CD32;
+      border-radius: 5px;
+      background-color: black;
+      color: #f5f5dc; /* Light Beige */
+      font-size: 16px;
+    }
+
+    .chat-box textarea {
+      margin-left: -10px;  /* Move the border of the textarea to the left */
+    }
+
+    .chat-box button {
+      padding: 10px 20px;
+      background-color: #32CD32;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .chat-box button:hover {
+      background-color: #28a428; /* Slightly darker green */
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: black;
+      color: #32CD32;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(50, 205, 50, 0.7);
+      text-align: center;
+      width: 300px;
+    }
+
+    .modal-content button {
+      background-color: #32CD32;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #28a428;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      background-color: black;
+      color: #f5f5dc;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+    }
+
+    footer a {
+      color: #32CD32;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Arrow -->
+  <a href="indexes.html" class="back-arrow">&#8592;</a>
+
+  <!-- Header Section -->
+  <header>
+    Help Us
+  </header>
+
+  <!-- Main Content Section -->
+  <div class="container">
+    <!-- Contact Information -->
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <p><strong>Contact us on:</strong> +123 456 7890</p>
+      <p><strong>Email us at:</strong> support@skywisewallet.com</p>
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="section-title">
+      Give Feedback
+    </div>
+    <p class="description">We value your feedback to improve SkyWise Wallet. Please feel free to provide any suggestions or comments below.</p>
+
+    <!-- Chat Box for Feedback -->
+    <div class="chat-box">
+      <h3>Your Feedback</h3>
+      <textarea id="feedback-text" placeholder="Write your feedback here..." rows="5"></textarea>
+      <button onclick="submitFeedback()">Submit Feedback</button>
+    </div>
+
+    <!-- Complaint Section -->
+    <div class="section-title">
+      Raise Complaint via Chat
+    </div>
+    <p class="description">If you have any complaints or issues, please submit them via the chat below, and we will resolve them promptly.</p>
+
+    <!-- Chat Box for Complaints -->
+    <div class="chat-box">
+      <h3>Submit a Complaint</h3>
+      <input type="text" id="name-input" placeholder="Enter your name">
+      <textarea id="complaint-text" placeholder="Describe your complaint..." rows="5"></textarea>
+      <button onclick="submitComplaint()">Submit Complaint</button>
+    </div>
+  </div>
+
+  <!-- Modal (Dialog Box) -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <p>Submitted Successfully!</p>
+      <button onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 SkyWise Wallet | <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Function to submit feedback
+    function submitFeedback() {
+      var feedback = document.getElementById("feedback-text").value;
+      if (feedback.trim() !== "") {
+        openModal();  // Show the modal
+        document.getElementById("feedback-text").value = ""; // Clear feedback textarea
+      } else {
+        alert("Please enter your feedback before submitting.");
+      }
+    }
+
+    // Function to submit complaint
+    function submitComplaint() {
+      var name = document.getElementById("name-input").value;
+      var complaint = document.getElementById("complaint-text").value;
+      if (name.trim() !== "" && complaint.trim() !== "") {
+        openModal();  // Show the modal
+        document.getElementById("name-input").value = ""; // Clear name input
+        document.getElementById("complaint-text").value = ""; // Clear complaint textarea
+      } else {
+        alert("Please fill in both fields before submitting.");
+      }
+    }
+
+    // Function to open the modal
+    function openModal() {
+      document.getElementById("success-modal").style.display = "flex";  // Show modal
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById("success-modal").style.display = "none";  // Hide modal
+    }
+  </script>
+
+</body>
+</html>

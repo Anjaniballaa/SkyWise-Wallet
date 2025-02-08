@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      background-color: #f4f6f9;
+    }
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(to right, #000 40%, #00FF44);
+      color: white;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar .logo h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .sidebar .profile {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sidebar .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .sidebar .profile p {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .sidebar .nav-links {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar .nav-links li {
+      margin: 10px 0;
+    }
+    .sidebar .nav-links a {
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      transition: background 0.3s ease;
+      border-radius: 5px;
+    }
+    .sidebar .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .sidebar .nav-links .active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .sidebar .icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .main-content .header {
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #000 40%, #00FF44);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .main-content .header h2 {
+      margin: 0;
+    }
+    .content-section {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .tool-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 180px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tool-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .tool-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .tool-card p {
+      font-size: 16px;
+      color: #4B0082;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <h1><span class="orange-text">SkyWise <br> Wallet</h1>
+    </div>
+    <div class="profile">
+      <img src="admin-profile.jpg" alt="Admin" class="profile-pic">
+      <p>Admin</p>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><img src="dashboard.jpg" alt="Dashboard Icon" class="icon"> Dashboard</a></li>
+      <li><a href="expenses.html"><img src="expense.jpg" alt="Expense Icon" class="icon"> Expense</a></li>
+      <li><a href="income.html"><img src="income.jpg" alt="Income Icon" class="icon"> Income</a></li>
+      <li><a href="tools.html" class="active"><img src="tools.jpg" alt="Tools Icon" class="icon"> Tools</a></li>
+      <li><a href="settings.html"><img src="settings.jpg" alt="Settings Icon" class="icon"> Settings</a></li>
+      <li><a href="profile.html"><img src="profile.jpg" alt="Profile Icon" class="icon"> Profile</a></li>
+      <li><a href="logout.html"><img src="logout.jpg" alt="Logout Icon" class="icon"> Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <h2>Tools</h2>
+    </div>
+    <div class="content-section">
+      <div class="tool-card" onclick="location.href='calendar.html'">
+        <img src="calendar.jpg" alt="Calendar">
+        <p>Calendar</p>
+      </div>
+      <div class="tool-card" onclick="location.href='calculator.html'">
+        <img src="calculator-icon.jpg" alt="Calculator">
+        <p>Calculator</p>
+      </div>
+      <div class="tool-card" onclick="location.href='currency-converter.html'">
+        <img src="currency-icon.jpg" alt="Currency Converter">
+        <p>Currency Converter</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

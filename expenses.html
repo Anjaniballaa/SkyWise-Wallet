@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expenses - SkyWise Wallet</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Reset and global styles */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      background-color: #f4f6f9;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(to right, #000 40%, #00FF44);
+      color: rgba(255, 255, 255, 0.05);
+      height: 200%;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+    }
+
+    .logo h1 {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .profile p {
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li {
+      margin: 15px 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+      /* Main content styles */
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f5f6fa;
+      }
+    
+      .header {
+        margin: 0 auto;
+        width: 90%; /* Increased width */
+        text-align: center;
+      }
+    
+      .header h2 {
+        margin: 0;
+        color: white;
+        background: linear-gradient(to right, #000 40%, #00FF44);
+        padding: 20px;
+        border-radius: 5px;
+      }
+    
+      .divider {
+        width: 90%; /* Match width of charts and table */
+        height: 4px;
+        background-color: #00FF44; /* Green line */
+        margin: 20px auto; /* Centered line */
+        border-radius: 2px;
+      }
+    
+      .charts-container {
+        display: flex;
+        flex-direction: column; /* Stack charts vertically */
+        gap: 20px;
+        align-items: center;
+      }
+    
+      .chart-box {
+        flex: none;
+        width: 95.5%; /* Increased width for charts */
+        max-height: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: white;
+        padding: 20px;
+      }
+    
+      .table-container {
+        width: 90%; /* Increased table width */
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+    
+      th, td {
+        padding: 15px;
+        text-align: left;
+      }
+    
+      th {
+        background-color: #00FF44;
+        color: white;
+      }
+    
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    
+      tr:nth-child(odd) {
+        background-color: #ffffff;
+      }
+    
+      canvas {
+        width: 100%;
+        max-height: 250px; /* Restrict chart height */
+      }
+    </style>
+    
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <h1><span class="white-text">SkyWise <br> Wallet</span></h1>
+    </div>
+    <div class="profile">
+      <img src="admin-profile.jpg" alt="Admin" class="profile-pic">
+      <p>Admin</p>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">
+        <img src="dashboard.jpg" alt="Dashboard Icon" class="icon"> Dashboard</a></li>
+      <li><a href="expenses.html" class="active">
+        <img src="expense.jpg" alt="Expense Icon" class="icon"> Expense</a></li>
+      <li><a href="income.html">
+        <img src="income.jpg" alt="Income Icon" class="icon"> Income</a></li>
+      <li><a href="tools.html">
+        <img src="tools.jpg" alt="Tools Icon" class="icon"> Tools</a></li>
+      <li><a href="settings.html">
+        <img src="settings.jpg" alt="Settings Icon" class="icon"> Settings</a></li>
+      <li><a href="profile.html">
+        <img src="profile.jpg" alt="Profile Icon" class="icon"> Profile</a></li>
+      <li><a href="logout.html">
+        <img src="logout.jpg" alt="Logout Icon" class="icon"> Logout</a></li>
+    </ul>
+  </div>
+  <div id="calculatorPopup" class="popup hidden">
+    <div class="calculator">
+        <input type="text" id="popupDisplay" readonly>
+        <div class="calculator-buttons">
+            <button onclick="appendPopupNumber('7')">7</button>
+            <button onclick="appendPopupNumber('8')">8</button>
+            <button onclick="appendPopupNumber('9')">9</button>
+            <button onclick="appendPopupOperator('/')">/</button>
+            <button onclick="appendPopupNumber('4')">4</button>
+            <button onclick="appendPopupNumber('5')">5</button>
+            <button onclick="appendPopupNumber('6')">6</button>
+            <button onclick="appendPopupOperator('*')">*</button>
+            <button onclick="appendPopupNumber('1')">1</button>
+            <button onclick="appendPopupNumber('2')">2</button>
+            <button onclick="appendPopupNumber('3')">3</button>
+            <button onclick="appendPopupOperator('-')">-</button>
+            <button onclick="appendPopupNumber('0')">0</button>
+            <button onclick="appendPopupNumber('.')">.</button>
+            <button class="clear" onclick="clearPopupDisplay()">C</button>
+            <button onclick="appendPopupOperator('+')">+</button>
+            <button class="equal" style="grid-column: span 4;" onclick="calculatePopup()">=</button>
+        </div>
+    </div>
+    <button class="close-popup" onclick="togglePopup()">Close</button>
+</div>
+
+<button id="openPopup" onclick="togglePopup()">Open Calculator</button>
+
+
+  <div class="main-content">
+    <div class="header">
+      <h2>Expenses Overview</h2>
+    </div>
+    <div class="divider"></div> <!-- Green line below the heading -->
+
+    <div class="charts-container">
+      <div class="chart-box">
+        <h3>Monthly Expenses (Bar Chart)</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Expense Distribution (Pie Chart)</h3>
+        <canvas id="pieChart"></canvas>
+      </div>
+      <div class="table-container">
+        <h3>Recent Transactions</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody id="expenseTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<!-- Include Calculator Popup CSS -->
+<link rel="stylesheet" href="calculator-popup.css">
+
+<!-- Include Calculator Popup JavaScript -->
+<script src="calculator-popup.js"></script>
+
+  <script>
+    let barChart, pieChart;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const expenses = JSON.parse(localStorage.getItem('expenses')) || [
+        { date: '2024-01-10', category: 'Food', amount: 500, remarks: 'Groceries' },
+        { date: '2024-01-15', category: 'Transport', amount: 200, remarks: 'Bus fare' },
+        { date: '2024-02-05', category: 'Entertainment', amount: 300, remarks: 'Movie night' },
+        { date: '2024-03-20', category: 'Utilities', amount: 1500, remarks: 'Electricity bill' },
+        { date: '2024-03-22', category: 'Food', amount: 1000, remarks: 'Dining out' }
+      ];
+
+      updateCharts(expenses);
+      updateTable(expenses);
+    });
+
+    function updateCharts(expenses) {
+      const monthlyData = Array(12).fill(0);
+      const categoryData = {};
+      const categoryLabels = [];
+
+      expenses.forEach(expense => {
+        const date = new Date(expense.date);
+        const month = date.getMonth();
+        monthlyData[month] += expense.amount;
+
+        if (categoryData[expense.category]) {
+          categoryData[expense.category] += expense.amount;
+        } else {
+          categoryData[expense.category] = expense.amount;
+          categoryLabels.push(expense.category);
+        }
+      });
+
+      const ctxBar = document.getElementById('barChart').getContext('2d');
+      const ctxPie = document.getElementById('pieChart').getContext('2d');
+
+      if (barChart) barChart.destroy();
+      if (pieChart) pieChart.destroy();
+
+      barChart = new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+            label: 'Monthly Expenses',
+            data: monthlyData,
+            backgroundColor: '#FFA500',
+          }]
+        },
+        options: {
+          scales: {
+            y: { min: 0, max: 100000, ticks: { stepSize: 20000 } }
+          }
+        }
+      });
+
+      pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+          labels: categoryLabels,
+          datasets: [{
+            data: Object.values(categoryData),
+            backgroundColor: ['#FFA500', '#4B0082', '#008080', '#D2691E', '#32CD32']
+          }]
+        }
+      });
+    }
+
+    function updateTable(expenses) {
+      const tableBody = document.getElementById('expenseTableBody');
+      tableBody.innerHTML = '';
+
+      expenses.slice(-5).forEach(expense => {
+        const row = `<tr>
+          <td>${new Date(expense.date).toLocaleDateString()}</td>
+          <td>${expense.category}</td>
+          <td>₹${expense.amount.toFixed(2)}</td>
+          <td>${expense.remarks || '-'}</td>
+        </tr>`;
+        tableBody.insertAdjacentHTML('beforeend', row);
+      });
+    }
+  </script>
+</body>
+</html>
