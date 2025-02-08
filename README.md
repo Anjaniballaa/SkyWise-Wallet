@@ -12,7 +12,7 @@ SkyWise-Wallet is a user-friendly expense tracker that simplifies managing your 
 
 ## Demo
 
-Experience SkyWise-Wallet in action: [Live Demo]()
+Experience SkyWise-Wallet in action: [Live Demo](https://anjaniballaa.github.io/SkyWise-Wallet/)
 
 ## Open the Application
 
